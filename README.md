@@ -3,8 +3,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Getting Started
 
 First, configure the .env variables:
-DATABASE_URL
-GOOGLE_CLIENT_ID & GOOGLE_CLIENT_SECRET: Create one from [https://console.cloud.google.com/](https://console.cloud.google.com/)
+  DATABASE_URL
+  GOOGLE_CLIENT_ID & GOOGLE_CLIENT_SECRET: Create one from [https://console.cloud.google.com/](https://console.cloud.google.com/)
 
 ```bash
 npm run dev
