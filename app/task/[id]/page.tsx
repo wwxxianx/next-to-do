@@ -11,12 +11,12 @@ import {
     Popover,
     PopoverContent,
     PopoverTrigger,
-} from "@/components/ui/popover";
-import { Input } from "@/components/ui/input";
+} from "@/components/ui/Popover";
+import { Input } from "@/components/ui/Input";
 import { cn } from "@/lib/utils";
 import { TagPayload, UpdateTaskPayload } from "@/lib/validators/task";
 import { Tag } from "@prisma/client";
-import { Toggle } from "@/components/ui/toggle";
+import { Toggle } from "@/components/ui/Toggle";
 import TagSkeleton from "@/components/TagSkeleton";
 import { useToast } from "@/components/ui/use-toast";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";

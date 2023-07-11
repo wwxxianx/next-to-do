@@ -1,6 +1,7 @@
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { TaskValidator } from "@/lib/validators/task";
+import { z } from "zod";
 
 export async function GET(req: Request) {
     try {
@@ -25,7 +26,9 @@ export async function GET(req: Request) {
         });
 
         return new Response(JSON.stringify(tasks), { status: 200 });
-    } catch (error) {}
+    } catch (error) {
+        return new Response("Something went wrong, please try again later.", { status: 500 })
+    }
 }
 
 export async function PUT(req: Request) {
@@ -55,5 +58,11 @@ export async function PUT(req: Request) {
         });
 
         return new Response(`Task created: ${task.title}`, { status: 201 });
-    } catch (error) {}
+    } catch (error) {
+        if (error instanceof z.ZodError) {
+            return new Response(error.message, { status: 422 });
+        }
+
+        return new Response("Could not crerate task, please try again later.", { status: 500 })
+    }
 }

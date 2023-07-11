@@ -17,7 +17,7 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-} from "./ui/dialog";
+} from "./ui/Dialog";
 import { useToast } from "./ui/use-toast";
 import { ExtendedTask } from "@/types/db";
 import { useRouter } from "next/navigation";

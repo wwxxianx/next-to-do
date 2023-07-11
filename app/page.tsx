@@ -1,7 +1,5 @@
 import NavBar from "@/components/NavBar";
-import Task from "@/components/TaskCard";
 import TaskList from "@/components/TaskList";
-import TaskSkeleton from "@/components/TaskSkeleton";
 import { getAuthSession } from "@/lib/auth";
 
 export default async function Home() {

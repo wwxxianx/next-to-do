@@ -1,6 +1,7 @@
 import { getAuthSession } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { TaskValidator, UpdateTaskValidator } from "@/lib/validators/task";
+import { z } from "zod";
 
 export async function GET(
     req: Request,
@@ -25,7 +26,9 @@ export async function GET(
         });
 
         return new Response(JSON.stringify(task), { status: 200 });
-    } catch (error) {}
+    } catch (error) {
+        return new Response("Something went wrong, please try again later.", { status: 500 })
+    }
 }
 
 export async function POST(
@@ -60,7 +63,13 @@ export async function POST(
         });
 
         return new Response("Task updated successfully", { status: 200 });
-    } catch (error) {}
+    } catch (error) {
+        if (error instanceof z.ZodError) {
+            return new Response(error.message, { status: 422 });
+        }
+
+        return new Response("Could not update task, please try again later.", { status: 500 })
+    }
 }
 
 export async function DELETE(
@@ -79,5 +88,7 @@ export async function DELETE(
         });
 
         return new Response(JSON.stringify(deleteTask), { status: 200 });
-    } catch (error) {}
+    } catch (error) {
+        return new Response("Could not delete task, please try again later.", { status: 500 })
+    }
 }
